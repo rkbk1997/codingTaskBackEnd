@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+// const nodemailer = require("nodemailer");
 var User = require('../models/userRegster');
 var passport = require('passport');
 
@@ -17,7 +18,8 @@ router.post('/register', function (req, res, next) {
 });
 async function addToDB(req, res) {
   var user = new User({
-    email: req.body.email,
+    email: req.body.username,
+    username: req.body.username,
     password: User.hashPassword(req.body.password),
     fname: req.body.fname,
     lname: req.body.lname,

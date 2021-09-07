@@ -6,6 +6,7 @@ var Userschema = new Schema({
     fname: { type: String, require: true },
     lname: { type: String, require: true },
     email: { type: String, require: true },
+    username: { type: String, require: true },
     password: { type: String, require: true },
     role: { type: String, require: true },
     status: { type: Number, require: true },

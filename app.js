@@ -38,7 +38,26 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+  //passport
+var passport = require('passport');
+var session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
+app.use(session({
+  name:'token',
+  resave:false,
+  saveUninitialized:false,
+  secret:'secret',
+  cookie:{
+    maxAge:36000000,
+    httpOnly:false,
+    secure:false
+  },
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
+}));
+require('./passport-config');
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/public', publicRoute);

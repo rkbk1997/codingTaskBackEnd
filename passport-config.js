@@ -2,7 +2,7 @@ var passport = require('passport')
     , LocalStrategy = require('passport-local').Strategy;
 var User = require('./models/userRegster');
 
-passport.use('local', new LocalStrategy({
+passport.use(new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password'
 },
